@@ -2,31 +2,49 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const morgan = require("morgan");
 require("dotenv").config();
 
-const app = express();
-
 //connect to MongoDB
+const dbURI =
+  "mongodb://" +
+  process.env.MONGO_USERNAME +
+  ":" +
+  process.env.MONGO_PASSWORD +
+  "@" +
+  process.env.MONGO_URI +
+  "/" +
+  process.env.MONGO_TESTBED_DB +
+  "?ssl=true&replicaSet=" +
+  process.env.MONGO_REPLICA_SET +
+  "&authSource=" +
+  process.env.MONGO_AUTH_SOURCE;
+
 mongoose.connect(
-  process.env.MONGOURI,
+  dbURI,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
   },
   (err, data) => {
     if (err) throw err;
-    console.log("connected to MongoDB");
+    console.log("Connected to MongoDB");
   }
 );
 
 //express settings
+const app = express();
+app.use(cookieParser());
+app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json({ limit: "1mb" }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(morgan("tiny"));
 
 //routes
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`App now listening for requests on port ${port}`);
+  console.log(`Psychic Cat now listening for requests on port ${port}`);
 });
