@@ -6,6 +6,9 @@ const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 require("dotenv").config();
 
+// routes to connect
+const userRoutes = require("./routes/user-routes");
+
 //connect to MongoDB
 const dbURI =
   "mongodb://" +
@@ -43,6 +46,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
 
 //routes
+app.use("/api/user", userRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
