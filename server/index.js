@@ -7,7 +7,7 @@ const morgan = require("morgan");
 require("dotenv").config();
 
 // routes to connect
-const userRoutes = require("./routes/user-routes");
+const authRoutes = require("./routes/auth-routes");
 
 //connect to MongoDB
 const dbURI =
@@ -46,7 +46,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("tiny"));
 
 //routes
-app.use("/api/user", userRoutes);
+app.use("/api/auth", authRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

@@ -2,10 +2,10 @@ const router = require("express").Router();
 const Pet = require("../models/pet-model");
 
 router.get("/get", async (req, res) => {
-  try {
-    let { petId } = req.query;
-    let petList;
+  let { petId } = req.query;
+  let petList;
 
+  try {
     if (petId) {
       petList = await Pet.find({ _id: petId });
       if (petList.length === 0) throw "user not found";
@@ -20,29 +20,14 @@ router.get("/get", async (req, res) => {
 });
 
 router.post("/create", async (req, res) => {
-  try {
-    let {
-      name,
-      animal,
-      gender,
-      birthday,
-      breed,
-      weight,
-      colour,
-      description,
-      condition,
-    } = req.body;
+  let { name, gender, condition, ...toCreate } = req.body;
 
+  try {
     let newPet = await Pet.create({
       name: name || "unnamed",
-      animal,
       gender: gender || "unidentified",
-      birthday,
-      breed,
-      weight,
-      colour,
-      description,
       condition: condition || "healthy",
+      toCreate,
     });
 
     res.status(200).json("new pet created", newPet);
@@ -52,9 +37,9 @@ router.post("/create", async (req, res) => {
 });
 
 router.post("/update", async (req, res) => {
-  try {
-    let { petId, ...toUpdate } = req.body;
+  let { petId, ...toUpdate } = req.body;
 
+  try {
     if (petId) {
       let data = await Pet.updateOne({ _id: petId }).set(toUpdate);
       res.status(200).json("pet updated", data);
