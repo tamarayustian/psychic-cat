@@ -8,6 +8,8 @@ require("dotenv").config();
 
 // routes to connect
 const authRoutes = require("./routes/auth-routes");
+const petRoutes = require("./routes/pet-routes");
+const userRoutes = require("./routes/user-routes");
 
 //connect to MongoDB
 const dbURI =
@@ -47,6 +49,8 @@ app.use(morgan("tiny"));
 
 //routes
 app.use("/api/auth", authRoutes);
+app.use("/api/pet", petRoutes);
+app.use("/api/user", userRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
