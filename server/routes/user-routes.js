@@ -19,8 +19,35 @@ router.get("/get", async (req, res) => {
   }
 });
 
-router.post("/create", async (req, res) => {});
+router.post("/create", async (req, res) => {
+  let { email, fullName, phoneNumber } = req.body;
 
-router.post("/update", async (req, res) => {});
+  try {
+    let newUser = await User.create({
+      email,
+      fullName,
+      phoneNumber,
+    });
+
+    res.status(200).json("new user created", newUser);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.post("/update", async (req, res) => {
+  let { userId, ...toUpdate } = req.body;
+
+  try {
+    if (userId) {
+      let data = await User.updateOne({ _id: userId }).set(toUpdate);
+      res.status(200).json("user updated", data);
+    } else {
+      throw "no user found";
+    }
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
 module.exports = router;
