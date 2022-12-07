@@ -36,7 +36,7 @@ export default function LoginContainer(props) {
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
           <Heading fontSize={"4xl"} textAlign={"center"}>
-            Log in
+            Log In
           </Heading>
         </Stack>
         <Box rounded={"lg"} boxShadow={"lg"} p={8}>
