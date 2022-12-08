@@ -38,7 +38,11 @@ router.post("/filter", async (req, res) => {
   let petResult;
 
   try {
-    petResult = await Pet.find({ animal, gender, condition });
+    petResult = await Pet.find({
+      animal,
+      gender,
+      condition,
+    });
     if (petResult.length === 0) throw "pet not found";
 
     res.status(200).json(petResult);
