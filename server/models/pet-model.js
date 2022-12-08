@@ -4,7 +4,7 @@ const petSchema = mongoose.Schema({
   name: String,
   animal: {
     type: String,
-    enum: ["cat", "dog", "fish"],
+    enum: ["cat", "dog", "fish", "unidentified"],
     required: true,
   },
   gender: {
@@ -20,6 +20,7 @@ const petSchema = mongoose.Schema({
     type: String,
     enum: ["healthy", "sick", "malnourished", "disabled"],
   },
+  tags: Array,
 });
 
 module.exports = mongoose.model("pets", petSchema);

@@ -5,12 +5,12 @@ export const NAV_ITEMS = [
       {
         label: "Search",
         subLabel: "Find your dream pet",
-        href: "#",
+        href: "/view",
       },
       {
-        label: "Gallery",
-        subLabel: "Our photo collection",
-        href: "#",
+        label: "Add",
+        subLabel: "Add a pet to our collection",
+        href: "/form",
       },
     ],
   },

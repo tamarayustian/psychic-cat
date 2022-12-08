@@ -19,18 +19,48 @@ router.get("/get", async (req, res) => {
   }
 });
 
+router.post("/search", async (req, res) => {
+  let { term } = req.body;
+  let petResult;
+
+  try {
+    petResult = await Pet.find({ animal: { $regex: term, $options: "ix" } });
+    if (petResult.length === 0) throw "pet not found";
+
+    res.status(200).json(petResult);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.post("/filter", async (req, res) => {
+  let { animal, gender, condition } = req.body;
+  let petResult;
+
+  try {
+    petResult = await Pet.find({ animal, gender, condition });
+    if (petResult.length === 0) throw "pet not found";
+
+    res.status(200).json(petResult);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 router.post("/create", async (req, res) => {
-  let { name, gender, condition, ...toCreate } = req.body;
+  let { name, gender, condition, animal, ...toCreate } = req.body;
 
   try {
     let newPet = await Pet.create({
       name: name || "unnamed",
       gender: gender || "unidentified",
       condition: condition || "healthy",
+      animal: animal || "unidentified",
+      tags: [gender, animal, condition],
       toCreate,
     });
 
-    res.status(200).json("new pet created", newPet);
+    res.status(200).json(newPet);
   } catch (err) {
     res.status(400).json(err);
   }
