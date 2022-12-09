@@ -1,6 +1,6 @@
 export const NAV_ITEMS = [
   {
-    label: "Find Pets",
+    label: "Pets",
     children: [
       {
         label: "Search",
@@ -11,6 +11,16 @@ export const NAV_ITEMS = [
         label: "Add",
         subLabel: "Add a pet to our collection",
         href: "/form",
+      },
+    ],
+  },
+  {
+    label: "Guests",
+    children: [
+      {
+        label: "Add",
+        subLabel: "Add a guest to our collection",
+        href: "#",
       },
     ],
   },

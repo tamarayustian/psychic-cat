@@ -34,15 +34,12 @@ router.post("/search", async (req, res) => {
 });
 
 router.post("/filter", async (req, res) => {
-  let { animal, gender, condition } = req.body;
+  let { ...toFilter } = req.body;
   let petResult;
+  console.log(toFilter);
 
   try {
-    petResult = await Pet.find({
-      animal,
-      gender,
-      condition,
-    });
+    petResult = await Pet.find({ toFilter });
     if (petResult.length === 0) throw "pet not found";
 
     res.status(200).json(petResult);

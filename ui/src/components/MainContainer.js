@@ -15,7 +15,6 @@ const MainContainer = () => {
           <Route exact path="/view" element={<PetContainer />} />
           <Route exact path="/signup" element={<SignUpContainer />} />
           <Route exact path="/login" element={<LoginContainer />} />
-          <Route exact path="/profile" element={<LoginContainer />} />
           <Route exact path="/form" element={<PetForm />} />
         </Routes>
       </BrowserRouter>
