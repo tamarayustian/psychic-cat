@@ -26,6 +26,7 @@ export default function PetForm(props) {
   const [description, setDescription] = useState("");
   const [condition, setCondition] = useState("healthy");
 
+  // handle pet submission form
   const onCreate = async (e) => {
     const payload = {
       name,
@@ -50,7 +51,7 @@ export default function PetForm(props) {
       toast({
         title: "Try again!",
         description: "Something went wrong.",
-        status: "erro",
+        status: "error",
         duration: 9000,
         isClosable: true,
       });

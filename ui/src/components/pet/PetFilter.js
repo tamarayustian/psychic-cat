@@ -9,12 +9,12 @@ import {
 } from "@chakra-ui/react";
 import { genderList, animalList, conditionList } from "../helpers/constants";
 
-const FilterTexts = ({
+export default function FilterTexts({
   handleTagChange,
   filteredTags,
   clearFilter,
   onClose,
-}) => {
+}) {
   return (
     <>
       <Container maxW="container.lg" p="0">
@@ -85,6 +85,4 @@ const FilterTexts = ({
       </Container>
     </>
   );
-};
-
-export default FilterTexts;
+}
