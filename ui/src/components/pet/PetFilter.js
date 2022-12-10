@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { genderList, animalList, conditionList } from "../helpers/constants";
 
-export default function FilterTexts({
+export default function PetFilter({
   handleTagChange,
   filteredTags,
   clearFilter,
