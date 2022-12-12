@@ -18,15 +18,14 @@ export default function GuestForm(props) {
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const onCreate = async (e) => {
+    e.preventDefault();
     const payload = {
-      email,
-      fullName,
-      phoneNumber,
+      email: email,
+      fullName: fullName,
+      phoneNumber: phoneNumber,
     };
     const res = await axios.post("/api/user/create", payload);
-    console.log(res);
-    console.log(res.status);
-    if (res.status === "200") {
+    if (res.status === 200) {
       toast({
         title: "Guest added.",
         status: "success",

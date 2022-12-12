@@ -29,7 +29,7 @@ router.post("/create", async (req, res) => {
       phoneNumber,
     });
 
-    res.status(200).json("new user created", newUser);
+    res.status(200).json(newUser);
   } catch (err) {
     res.status(400).json(err);
   }
@@ -41,7 +41,7 @@ router.post("/update", async (req, res) => {
   try {
     if (userId) {
       let data = await User.updateOne({ _id: userId }).set(toUpdate);
-      res.status(200).json("user updated", data);
+      res.status(200).json(data);
     } else {
       throw "no user found";
     }

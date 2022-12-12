@@ -73,7 +73,7 @@ router.post("/update", async (req, res) => {
   try {
     if (petId) {
       let data = await Pet.updateOne({ _id: petId }).set(toUpdate);
-      res.status(200).json("pet updated", data);
+      res.status(200).json(data);
     } else {
       throw "no pet found";
     }

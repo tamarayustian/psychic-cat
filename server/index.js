@@ -52,7 +52,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/pet", petRoutes);
 app.use("/api/user", userRoutes);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 2400;
 app.listen(port, () => {
   console.log(`Psychic Cat now listening for requests on port ${port}`);
 });

@@ -27,6 +27,7 @@ export default function PetForm(props) {
 
   // handle pet submission form
   const onCreate = async (e) => {
+    e.preventDefault();
     const payload = {
       name,
       animal,
@@ -39,7 +40,7 @@ export default function PetForm(props) {
       condition,
     };
     const res = await axios.post("/api/pet/create", payload);
-    if (res.status === "200") {
+    if (res.status === 200) {
       toast({
         title: "Animal added.",
         status: "success",
