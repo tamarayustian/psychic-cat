@@ -5,12 +5,12 @@ export const NAV_ITEMS = [
       {
         label: "Search",
         subLabel: "Find your dream pet",
-        href: "/view",
+        href: "/pet/view",
       },
       {
         label: "Add",
         subLabel: "Add a pet to our collection",
-        href: "/form",
+        href: "/pet/form",
       },
     ],
   },
@@ -20,7 +20,7 @@ export const NAV_ITEMS = [
       {
         label: "Add",
         subLabel: "Add a guest to our collection",
-        href: "#",
+        href: "/guest/form",
       },
     ],
   },

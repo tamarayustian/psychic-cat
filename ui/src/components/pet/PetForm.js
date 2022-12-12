@@ -7,7 +7,6 @@ import {
   Button,
   Select,
   useToast,
-  NumberInputField,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import axios from "axios";
@@ -98,7 +97,7 @@ export default function PetForm(props) {
           </FormControl>
           <FormControl id="weight">
             <FormLabel>Weight</FormLabel>
-            <NumberInputField onChange={(e) => setWeight(e.target.value)} />
+            <Input onChange={(e) => setWeight(e.target.value)} />
           </FormControl>
           <FormControl id="colour">
             <FormLabel>Colour</FormLabel>
